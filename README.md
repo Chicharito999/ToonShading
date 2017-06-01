@@ -21,13 +21,12 @@ Author:赵明福                                        Stude
 　　在顶点着色器中对所有顶点进行法向量计算，得到每个顶点的法向量，在将输出的顶点法向量作为参数输入片段着色器，片段着色器根据每个三角形片插值得到所有像素的法向量，计算所有像素点的法向量和反射光线的夹角，根据夹角的大小设置不同的颜色值。再通过观察向量和法线的夹角大小设置轮廓。<br>
 
 ## Display
-视频链接：http://www.bilibili.com/video/av9903444/<br>
 截图：<br>
 ![](https://github.com/Chicharito999/ImageCache/raw/master/image/Gouraud.png)<br>
                                     　　　　　　　　　Gouraud Shading<br>
 ![](https://github.com/Chicharito999/ImageCache/raw/master/image/Phong.png)<br>
                                 　  　　　　　　　　  Phong Shading<br>
 ![](https://github.com/Chicharito999/ImageCache/raw/master/image/BlinnPhong.png) <br>
-                                   　　　　　　　　　 BlinnPhong Shading<br>
+                                   　　　　　　　　　 Toon Shading<br>
 　　通过Gouraud Shading和Phong Shading的对比可以看出，由于Gouraud Shading是基于顶点计算的光照，其余光照的元素由顶点插值得到，这样插值后的光照相比于基于片元的Phong Shading显得不是很真实，Phong Shading能够获得更为平滑的光照效果。<br>
 　　通过Phong Shading和BlinnPhong Shading的对比可以看出，BlinnPhong Shading在明暗交接处的变化是渐变的不像Phong Shading那样变化得那么突然，这是因为在计算镜面反射光时用到的角度不同。　
