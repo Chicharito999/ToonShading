@@ -1,0 +1,34 @@
+uniform float3 LightPosition=float3(2.0,2.0,2.0); //光源位置
+uniform float3 eyePosition=float3(0.0,0.0,5.0);   //相机位置
+uniform float3 I=float3(1.0,1.0,1.0);              //光强度
+
+struct input{
+      float3 objectPos: TEXCOORD0;   
+      float3 normal   : TEXCOORD1;
+};
+ 
+struct output{
+      float4 color     : COLOR;
+};
+ 
+output fs_main( in input IN )
+{
+      output OUT;
+ 
+      float3 N = normalize(IN.normal);
+      float3 P = IN.objectPos;
+      float3 L = normalize(LightPosition - P);
+      float NdotL = max(dot(N,L),0);//入射光线与法线夹角
+      float3 V = normalize(eyePosition - P);
+      float NdotV = max(dot(N,V),0);//观察向量与法线的夹角
+
+	  float3 color;
+	  if( NdotL<0.5)    color = float3(0.16,0.14,0.129);//设置不同漫反射角度区域的颜色值
+	  else if(NdotL>=0.5 && NdotL<0.85)    color =float3(1.0,0.379,0);
+	  else if(NdotL>=0.85)    color = float3(1.0,0.6,0.07);
+	  if(NdotV<0.2)    color = float3(0,0,0);//轮廓线条设为黑色
+      OUT.color.xyz= color;
+      OUT.color.w = 1.0;
+ 
+      return OUT;
+}

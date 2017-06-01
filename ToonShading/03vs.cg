@@ -1,0 +1,20 @@
+struct output
+{
+      float4 position  : POSITION;    
+      float3 objectPos : TEXCOORD0;   
+      float3 normal     : TEXCOORD1;
+};
+ 
+output vs_main( float4 position : POSITION,
+                  float3 normal   : NORMAL,
+                  uniform float4x4 MV,
+                  uniform float4x4 MVP
+                    )
+{
+      output OUT;
+      OUT.position = mul(MVP, position);
+      OUT.objectPos = mul(MV, position).xyz;//每个顶点在相机坐标系的坐标
+      OUT.normal = mul(MV, float4(normal,0.0)).xyz;//每个顶点的法向量
+ 
+      return OUT;
+}
