@@ -31,3 +31,4 @@ Author:赵明福                                        Stude
 　　通过Gouraud Shading和Phong Shading的对比可以看出，由于Gouraud Shading是基于顶点计算的光照，其余光照的元素由顶点插值得到，这样插值后的光照相比于基于片元的Phong Shading显得不是很真实，Phong Shading能够获得更为平滑的光照效果。<br>
 　　通过Phong Shading和BlinnPhong Shading的对比可以看出，BlinnPhong Shading在明暗交接处的变化是渐变的不像Phong Shading那样变化得那么突然，这是因为在计算镜面反射光时用到的角度不同。　
  
+ 
